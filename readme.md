@@ -39,3 +39,6 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
     - Data can now be saved to /saves/saveData.json (for now, only saves first card in your shuffled deck).
 - other
     - added /saves to .gitignore
+
+### 1.0 (3.2022.06.03)
+- started dividing classes and types from the main file (Deck and CardType)
