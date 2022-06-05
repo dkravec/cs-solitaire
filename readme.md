@@ -37,8 +37,14 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - class SaveDataType (new).
     - created functions to save and read data (currently for just one card).
     - Data can now be saved to /saves/saveData.json (for now, only saves first card in your shuffled deck).
-- other
-    - added /saves to .gitignore
+- other.
+    - added /saves to .gitignore.
 
 ### 1.0 (3.2022.06.03)
-- started dividing classes and types from the main file (Deck and CardType)
+- started dividing classes and types from the main file (Deck and CardType).
+
+### 1.0 (4.2022.06.04)
+- Moved SaveDataType into a new file (in /classes).
+- Renamed /types to /structs.
+- added DeckJsonType.cs, to convert the Deck class into a json saveable object. 
+- Now saves entire deck data to saveData.json.

@@ -1,5 +1,4 @@
-﻿using System.Text.Json;
-using Solitaire.types;
+﻿using Solitaire.structs;
 using Solitaire.classes;
 
 namespace Solitaire 
@@ -70,7 +69,6 @@ namespace Solitaire
             Console.ReadLine();
             // Console.Clear();
             // drawCards();
-            
         }
 
         public static void characterWriteTest() 
@@ -123,7 +121,8 @@ namespace Solitaire
             
             // saving data
             SaveDataType saving = new SaveDataType();
-            saving.SaveGameData(myDeck.deck[0]);
+           //  Console.WriteLine(myDeck.deck[0].cardNumber);
+            saving.SaveGameData(myDeck);
             saving.LoadData();
 
             // Shows each card in the deck (shuffled)
@@ -164,55 +163,6 @@ namespace Solitaire
         }
     }
 
-    class SaveDataType
-    {
-        private string saveLocation = "./saves";
-
-        public void SaveGameData(CardType card) {
-
-
-            // List<CardType> _data = new List<CardType>();
-            // _data.Add(card);
-
-            /* try 1
-            string json = JsonSerializer.Serialize(card);
-
-            var newCardtest = new CardType
-            {
-                cardNumber = "4",
-                cardSuit = "Spades",
-                cardColour = "Red"
-            };
-
-
-            Console.WriteLine(newCardtest.cardNumber);
-
-           string cardJson = JsonSerializer.Serialize(newCardtest);
-            */
-
-            /* try 2
-            string jsonString = JsonSerializer.Serialize<CardType>(card);
-            Console.WriteLine(jsonString);
-            */
-
-            var options = new JsonSerializerOptions { WriteIndented = true };
-            string jsonString = JsonSerializer.Serialize(card, options);
-
-            Console.WriteLine(jsonString);
-            System.IO.File.WriteAllText($"{saveLocation}/saveData.json", jsonString);
-        }
-        public void LoadData() {
-
-            string jsonString = File.ReadAllText($"{saveLocation}/saveData.json");
-            CardType weatherForecast = JsonSerializer.Deserialize<CardType>(jsonString)!;
-            Console.WriteLine(weatherForecast.cardNumber);
-
-            // string mystring = File.ReadAllText($"{saveLocation}/saveData.json");
-            // Console.WriteLine(mystring);
-        }
-    }
-
-    
     /*
     struct GameDataType 
     {

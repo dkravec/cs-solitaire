@@ -1,4 +1,4 @@
-using Solitaire.types;
+using Solitaire.structs;
 
 namespace Solitaire.classes
 {
@@ -7,7 +7,7 @@ namespace Solitaire.classes
         // public string colour = "blue";
         // public int numCards = 52;
         // public int numDeck = 52;
-        public int numDiscard = 0;
+        public int numDiscard = 0; 
         public string[] cardNumbers = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
         public int amountJokers = 2;
         public string[] cardSuits = { "Clubs", "Diamonds", "Hearts", "Spades" };

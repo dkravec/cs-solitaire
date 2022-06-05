@@ -1,4 +1,4 @@
-namespace Solitaire.types
+namespace Solitaire.structs
 {
     public struct CardType
     {
