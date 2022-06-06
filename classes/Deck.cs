@@ -4,9 +4,6 @@ namespace Solitaire.classes
 {
     public class Deck
     {
-        // public string colour = "blue";
-        // public int numCards = 52;
-        // public int numDeck = 52;
         public int numDiscard = 0; 
         public string[] cardNumbers = { "A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K" };
         public int amountJokers = 2;
@@ -14,10 +11,6 @@ namespace Solitaire.classes
         public CardType[] cards = { };
         public CardType[] deck = { };
         public int[] currentDiscard = { };
-
-        public void Run() {
-            // Console.WriteLine(colour);
-        }
 
         public void CalucateCards() {
             // Add all cards to the cards array
@@ -77,24 +70,6 @@ namespace Solitaire.classes
         public CardType pickNextCard() {
             return cards[0];
         }
-
-        /*  
-        public void CardNum() {
-            Console.WriteLine("There are " + numCards + " cards in the deck.");
-        }
-
-        public void changeNumDeck(int num) {
-            numDeck = num;
-        }
-
-        public void changeNumDiscard(int num) {
-            numDiscard = num;
-        }
-    
-        public void changeColor(string newColour) {
-            colour = newColour;
-        }
-        */
         public string checkCardColour(CardType card) {
             // Check the colour of any card 
             if (card.cardSuit == "Clubs") {

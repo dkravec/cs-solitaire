@@ -48,3 +48,9 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - Renamed /types to /structs.
 - added DeckJsonType.cs, to convert the Deck class into a json saveable object. 
 - Now saves entire deck data to saveData.json.
+
+### 1.0 (5.2022.06.05)
+- Removed Deck.Run function.
+- Removed extra commented out code from every file.
+- Added GameLoop function, to test once its ready. (Loops every 1s)
+- Created new GameDataType (from comments in Program.cs).

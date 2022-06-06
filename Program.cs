@@ -10,15 +10,6 @@ namespace Solitaire
             Console.WriteLine("---------------------");
 
             Deck myDeck = new Deck();
-           //  Deck myDeck = new Deck();
-            // myDeck.colour = "red";
-            myDeck.Run();
-            // myDeck.CardNum();
-            // myDeck.changeColor("blue");
-
-            // Console.WriteLine(myDeck.colour);
-            // Console.ReadKey().Key;
-            // returns capital letter
 
             myDeck.CalucateCards();
 
@@ -27,14 +18,11 @@ namespace Solitaire
 
         public static void gameTitle(Deck myDeck) 
         {
-           // Console.Clear();
+            Console.Clear();
+            
             WriteConsole("Line", "Welcome to Solitaire!", "Red");
-
-           // Console.WriteLine("Welcome to Solitaire!");
             WriteConsole("Line", "Press 'a' to run last saved game!", "Blue");
             WriteConsole("Line", "Press 'Enter' to begin a new game!", "Green");
-
-            // waitingForKey();
 
             string keyPressed;
             bool validKey = false;
@@ -51,6 +39,8 @@ namespace Solitaire
                     Console.WriteLine("Invalid key pressed. Please try again.");
                 }
             } while (validKey == false);
+            
+            GameLoop();
 
             bool keyPressedEscape = false;
             do {
@@ -60,15 +50,7 @@ namespace Solitaire
                 }
             } while (keyPressedEscape == false);
 
-            // Console.WriteLine(keyPressed);
-
-           // Console.WriteLine( );
-           
-            // characterWriteTest();
-           
             Console.ReadLine();
-            // Console.Clear();
-            // drawCards();
         }
 
         public static void characterWriteTest() 
@@ -82,9 +64,7 @@ namespace Solitaire
 
             foreach (var c in allColors)
             {
-               // Console.WriteLine("[" + c + "]");
                 WriteConsole("Line", "[" + c + "]", $"{c}");
-                // Console.ForegroundColor = (ConsoleColor)c;
             }
         }
 
@@ -115,26 +95,19 @@ namespace Solitaire
             myDeck.CalucateCards();
 
             // shuffle cards
-            // CardType[] shuffledCards = myDeck.shuffleCards();
             myDeck.shuffleCards();
 
-            
             // saving data
             SaveDataType saving = new SaveDataType();
-           //  Console.WriteLine(myDeck.deck[0].cardNumber);
             saving.SaveGameData(myDeck);
             saving.LoadData();
 
             // Shows each card in the deck (shuffled)
-           //  Console.WriteLine(shuffledCards[0].cardNumber);
             String cardsStringCheck = "";
 
             for (int i = 0; i < myDeck.deck.Length; i++)
             {
-               // Console.WriteLine(shuffledCards[i].cardNumber);
                 CardType currentCard = myDeck.deck[i];
-                // old
-                // cardsStringCheck += currentCard.cardNumber + " " + currentCard.cardSuit + " ";
                 cardsStringCheck += $"{currentCard.cardNumber} {currentCard.cardSuit} {currentCard.cardColour}\n";
             }
         
@@ -161,17 +134,12 @@ namespace Solitaire
                 Console.WriteLine("Error: Invalid write type");
             }
         }
-    }
 
-    /*
-    struct GameDataType 
-    {
-        public int numDiscard;
-        public string[] cardNumbers;
-        public string[] cardSuits;
-        public CardType[] cards;
-        public CardType[] deck;
-        public int[] currentDiscard;
+        public static async void GameLoop() {
+            do {
+                Console.WriteLine("Game loop");
+                await Task.Delay(1000);
+            } while (true); 
+        }
     }
-    */
 }
