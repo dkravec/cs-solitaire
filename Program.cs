@@ -40,19 +40,35 @@ namespace Solitaire
                 }
             } while (validKey == false);
             
-            GameLoop();
+           //  GameLoop();
+           drawCards(myDeck);
 
-            bool keyPressedEscape = false;
+           User myUser = new User();
+
+
+           myUser.GetGridSize();
+
+           // bool keyPressedEscape = false;
+            int[] currentCoords = {0,0};
             do {
-                if (Console.ReadKey(true).Key.ToString() == "Escape") {
-                    keyPressedEscape = true;
+                string keyPressedMovement = Console.ReadKey(true).Key.ToString();
+                // Console.WriteLine(currentCoords[0] + "," + currentCoords[1]);
+
+                myUser.MoveSelect(keyPressedMovement);
+                
+
+                //Console.Write(currentCoords[0] + "," + currentCoords[1]);
+                // keyPressed = Console.ReadKey(true).Key.ToString();
+               //  Console.WriteLine(keyPressedMovement);
+                if (keyPressed == "Escape") {
+
+                   // keyPressedEscape = true;
                     Console.WriteLine("Menu... (maybe)... (eventually)...");
                 }
-            } while (keyPressedEscape == false);
-
-            Console.ReadLine();
+            } while (true);
+            //  Console.ReadLine();
         }
-
+        
         public static void characterWriteTest() 
         {
             WriteConsole("Inline", "[A]", "White");
@@ -68,10 +84,28 @@ namespace Solitaire
             }
         }
 
-        public static void drawCards() 
+        public static void drawCards(Deck myDeck) 
         {
             Console.Clear();
             Console.WriteLine("Drawing cards");
+
+            int[,] coords = {
+                // x , y , card
+                {3, 3, 3},
+                {5, 6, 5},
+                {2,4,6},
+                {4,5,7},
+                {4,6,7}
+            };
+
+            for (int i = 0; i < coords.GetLength(0); i++)
+            {
+                Console.SetCursorPosition(coords[i, 0], coords[i, 1]);
+                Console.Write(myDeck.deck[coords[i, 2]].cardNumber);
+                Console.SetCursorPosition(0, 0);
+
+            }
+
             /* deck layout
                 [?] [o]     [:] [:] [:] [:]
 
@@ -136,9 +170,19 @@ namespace Solitaire
         }
 
         public static async void GameLoop() {
+            int current = 0;
             do {
-                Console.WriteLine("Game loop");
-                await Task.Delay(1000);
+                current++;
+                Console.WriteLine("Game loop: " + current);
+                await Task.Delay(10);
+                // 1000 = 1s  = 1fps
+                // 500 = 0.5s = 2fps
+                // 250 = 0.25s = 4fps
+                // 100 = 0.1s = 8fps
+                // 50 = 0.05s = 16fps
+                // 25 = 0.025s = 32fps
+                // 10 = 0.01s = 64fps
+
             } while (true); 
         }
     }

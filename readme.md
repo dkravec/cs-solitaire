@@ -54,3 +54,14 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - Removed extra commented out code from every file.
 - Added GameLoop function, to test once its ready. (Loops every 1s)
 - Created new GameDataType (from comments in Program.cs).
+
+### 1.0 (6.2022.06.07)
+- Commented out call to GameLoop function. 
+- Updated GameLoop to tell which frame you are currently on.
+- Where the function checks for escape button, program also checks for user movement.
+- created drawCards function
+    - It is a prototype, it draws cards on points on the terminal. 
+- Created new class, User
+    - 2 functions, GetGridSize, MoveSelect
+    - GetGridSize function checks your terminal size
+    - MoveSelect checks your input prevously, and moves accordingly.
