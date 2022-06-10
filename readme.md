@@ -65,3 +65,10 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
     - 2 functions, GetGridSize, MoveSelect
     - GetGridSize function checks your terminal size
     - MoveSelect checks your input prevously, and moves accordingly.
+
+### 1.0 (7.2022.06.09)
+- Rewrote /classes/User.cs (then commented, then reworked).
+- Created a border around the terminal, and stores the coordinates of each wall.
+- Created a new function that checks the coordinates of the wall, and checks if you ran into it.
+    - Currently only the right side is not working.
+- created new /structs/borderLocationType.cs, made it easier to save the data of the walls.

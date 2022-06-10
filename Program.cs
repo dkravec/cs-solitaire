@@ -45,7 +45,6 @@ namespace Solitaire
 
            User myUser = new User();
 
-
            myUser.GetGridSize();
 
            // bool keyPressedEscape = false;
