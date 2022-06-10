@@ -59,11 +59,11 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - Commented out call to GameLoop function. 
 - Updated GameLoop to tell which frame you are currently on.
 - Where the function checks for escape button, program also checks for user movement.
-- created drawCards function
+- created drawCards function.
     - It is a prototype, it draws cards on points on the terminal. 
-- Created new class, User
-    - 2 functions, GetGridSize, MoveSelect
-    - GetGridSize function checks your terminal size
+- Created new class, User.
+    - 2 functions, GetGridSize, MoveSelect.
+    - GetGridSize function checks your terminal size.
     - MoveSelect checks your input prevously, and moves accordingly.
 
 ### 1.0 (7.2022.06.09)
@@ -71,4 +71,8 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - Created a border around the terminal, and stores the coordinates of each wall.
 - Created a new function that checks the coordinates of the wall, and checks if you ran into it.
     - Currently only the right side is not working.
-- created new /structs/borderLocationType.cs, made it easier to save the data of the walls.
+- Created new /structs/borderLocationType.cs, made it easier to save the data of the walls.
+
+### 1.0 (8.2022.06.10)
+- Removed extra comments.
+- Fixed problem where it wouldnt understand the border on the left side. it was due to me not adding a -1 in the coordinate of the border itself.
