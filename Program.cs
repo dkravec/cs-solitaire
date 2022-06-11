@@ -45,8 +45,6 @@ namespace Solitaire
 
            User myUser = new User();
 
-           myUser.GetGridSize();
-
            // bool keyPressedEscape = false;
             int[] currentCoords = {0,0};
             do {

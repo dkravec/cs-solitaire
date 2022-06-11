@@ -6,23 +6,37 @@ namespace Solitaire.classes
         public int[] currentCoords = { 5, 5 };
         public int[] gridSizeX = { 0,0 };
         public int[] gridSizeY = { 0,0 };
+        int[] lastXGrid = {0,0};
+        int[] lastYGrid = {0,0};
+
         public borderLocationType[] borderLocations = {};
         public Boolean firstRun = true;
-
         Boolean debug = false;
 
-        public void GetGridSize() 
+        public Boolean GetGridSize() 
         {
-            int[] gridSize = {0,0};
-            int[] XGrid = {0,0};
-            int[] YGrid = {0,0};
+            lastXGrid[0] = gridSizeX[0];
+            lastXGrid[1] = gridSizeX[1];
+            lastYGrid[0] = gridSizeY[0];
+            lastYGrid[1] = gridSizeY[1];
+
             gridSizeX[0] = 0;
             gridSizeX[1] = Console.WindowWidth;
             gridSizeY[0] = 0;
             gridSizeY[1] = Console.WindowHeight;
+            // Console.WriteLine(gridSizeX[1] + ", " + lastXGrid[1] + ", " + gridSizeY[1] + ", " + lastYGrid[1]);
+
+            if (
+                gridSizeX[0]==lastXGrid[0]&&
+                gridSizeX[1]==lastXGrid[1]&&
+                gridSizeY[0]==lastYGrid[0]&&
+                gridSizeY[1]==lastYGrid[1]
+            ) { return true; }
+            else { return false; }
         }
 
-        public void FllBorder() {
+        public void FllBorder() 
+        {
             /*
   xGrid[0]  + + + + + + + + +  xGrid[1]
             +               +
@@ -90,11 +104,10 @@ namespace Solitaire.classes
         
         public void MoveSelect(string key) 
         {
-            GetGridSize();
-            FllBorder();
+            Boolean sameSize = GetGridSize();
+            if (!sameSize) FllBorder();
 
             int[] userCoords = {5,5};
-
 
             if (key=="LeftArrow") 
             {

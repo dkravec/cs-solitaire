@@ -76,3 +76,9 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 ### 1.0 (8.2022.06.10)
 - Removed extra comments.
 - Fixed problem where it wouldnt understand the border on the left side. it was due to me not adding a -1 in the coordinate of the border itself.
+
+### 1.0 (9.2022.06.11)
+- Removed /saves from .gitignore, and replaced with /saves/* (when you run without the folder, it crashes)
+- GetGridSize returns a Boolean to check if the grid remained the same size as last requested.
+- Now only creates the border when the grid changed size.
+- Removed myUser.GetGridSize from Program.cs. (unrequired)
