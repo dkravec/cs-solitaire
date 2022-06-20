@@ -82,3 +82,13 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - GetGridSize returns a Boolean to check if the grid remained the same size as last requested.
 - Now only creates the border when the grid changed size.
 - Removed myUser.GetGridSize from Program.cs. (unrequired)
+
+### 1.0 (10.2022.06.19)
+- Escape will now always be working when pressing Escape.
+- Created new Layout.cs.
+    - Draws the deck, and discard pile.
+    - Will keep in place where piles are.
+    - function to draw a card in the discard.
+- Game draws deck, discard.
+- In the main loop, it will now check if you pressed enter.
+    - if you are where deck is, it will add a card in discard pile.

@@ -41,24 +41,31 @@ namespace Solitaire
             } while (validKey == false);
             
            //  GameLoop();
-           drawCards(myDeck);
+            drawCards(myDeck);
 
-           User myUser = new User();
+            User myUser = new User();
+            Layout myLayout = new Layout();
+            myLayout.DrawDeck();
+            myLayout.DrawDiscard();
 
            // bool keyPressedEscape = false;
             int[] currentCoords = {0,0};
             do {
                 string keyPressedMovement = Console.ReadKey(true).Key.ToString();
-                // Console.WriteLine(currentCoords[0] + "," + currentCoords[1]);
+
+                if (keyPressedMovement == "Enter") {
+                    if ((myUser.currentCoords[0] == myLayout.DeckLocation[0]) && (myUser.currentCoords[1] == myLayout.DeckLocation[1])) {
+                        Console.WriteLine(myUser.currentCoords[0] + ", " + myUser.currentCoords[1]);
+
+                        CardType nextDiscard = myDeck.pickNextCard();
+                        myLayout.DrawCardDiscord(nextDiscard);
+                    };
+                    
+                }
 
                 myUser.MoveSelect(keyPressedMovement);
-                
 
-                //Console.Write(currentCoords[0] + "," + currentCoords[1]);
-                // keyPressed = Console.ReadKey(true).Key.ToString();
-               //  Console.WriteLine(keyPressedMovement);
-                if (keyPressed == "Escape") {
-
+                if (keyPressedMovement == "Escape") {
                    // keyPressedEscape = true;
                     Console.WriteLine("Menu... (maybe)... (eventually)...");
                 }
