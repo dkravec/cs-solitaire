@@ -23,6 +23,7 @@ namespace Solitaire
             WriteConsole("Line", "Welcome to Solitaire!", "Red");
             WriteConsole("Line", "Press 'a' to run last saved game!", "Blue");
             WriteConsole("Line", "Press 'Enter' to begin a new game!", "Green");
+            WriteConsole("Line", "Clubs (♣), Diamonds (♦), Hearts (♥), and Spades (♠)", "Yellow");
 
             string keyPressed;
             bool validKey = false;
@@ -97,9 +98,9 @@ namespace Solitaire
                 // x , y , card
                 {3, 3, 3},
                 {5, 6, 5},
-                {2,4,6},
-                {4,5,7},
-                {4,6,7}
+                {2, 4, 6},
+                {4, 5, 7},
+                {4, 6, 7}
             };
 
             for (int i = 0; i < coords.GetLength(0); i++)

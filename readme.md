@@ -92,3 +92,10 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - Game draws deck, discard.
 - In the main loop, it will now check if you pressed enter.
     - if you are where deck is, it will add a card in discard pile.
+
+### 1.0 (11.2022.08.14)
+- At gameTitle, it shows the card types with icons.
+- added CalucateHandout in deck.cs.
+    - it should calucate your handout (but it might not work, untested).
+- Added type HandoutType.
+    - keeps track of your layers in handout.

@@ -67,6 +67,35 @@ namespace Solitaire.classes
             return deck;
         }
 
+        public HandoutType[] CalucateHandout() {
+
+            List<HandoutType> handout = new List<HandoutType>();
+            // currentDiscard
+            int[] currentLayout = { 0, 0, 0 };
+
+            foreach(CardType deckCard in this.deck) {
+                if (currentLayout[0] == 7) {
+                    this.currentDiscard[currentDiscard[2]] = currentDiscard[2];
+                    currentDiscard[2]++;
+                } else {
+                    if (currentLayout[0] == currentDiscard[1]) {
+                        currentLayout[0]++;
+                        currentLayout[1]++;
+                    };
+
+                    HandoutType cardHandout = new HandoutType();
+
+                    cardHandout.layer = currentLayout[0];
+                    cardHandout.card = deckCard;
+
+                    handout.Add(cardHandout);
+                }
+                // Console.WriteLine(card.cardNumber + " of " + card.cardSuit);
+            }
+
+            return handout.ToArray();
+        }
+
         public CardType pickNextCard() {
             return cards[0];
         }
