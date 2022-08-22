@@ -99,3 +99,12 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
     - it should calucate your handout (but it might not work, untested).
 - Added type HandoutType.
     - keeps track of your layers in handout.
+
+### 1.0 (12.2022.08.21)
+- Created a new War game option.
+- WarGame Class.
+    - StartWarGame(), starts the game, and sets the deck and shuffles.
+    - GameLoopWar(), which will draw new cards.
+    - Handout(), attempts to divide cards to the different users (currently not finished)
+    - formatCard(), which will be used once cards are drawn on screen.
+    - 

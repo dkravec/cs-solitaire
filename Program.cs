@@ -22,6 +22,7 @@ namespace Solitaire
             
             WriteConsole("Line", "Welcome to Solitaire!", "Red");
             WriteConsole("Line", "Press 'a' to run last saved game!", "Blue");
+            WriteConsole("Line", "Press 'b' to play the card game, War!", "Blue");
             WriteConsole("Line", "Press 'Enter' to begin a new game!", "Green");
             WriteConsole("Line", "Clubs (♣), Diamonds (♦), Hearts (♥), and Spades (♠)", "Yellow");
 
@@ -36,6 +37,10 @@ namespace Solitaire
                 } else if (keyPressed == "A") {
                     validKey=true;
                     Console.WriteLine("This will return to last saved game. (eventually)");
+                } else if (keyPressed == "B") {
+                    validKey=true;
+                    new WarGame().StartWarGame();
+                    return;
                 } else {
                     Console.WriteLine("Invalid key pressed. Please try again.");
                 }
