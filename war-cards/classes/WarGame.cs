@@ -87,27 +87,59 @@ namespace Solitaire.classes
             for (int i = 0; i<amountPlayers; i++) {
                 PrepareLayout.Add(0);
                 PrepareHandout.Add(new WarLayout());
+                // Console.WriteLine(PrepareHandout[i]);
             }
 
             currentLayout = PrepareLayout.ToArray();
+            // WarLayout[] warLayoutAr = PrepareHandout.ToArray();
 
             int amountDivided = warDeck.deck.Length / amountPlayers;
 
             foreach(CardType deckCard in warDeck.deck) {
                 // handout.Add(deckCard);
                 int length = currentLayout.Length;
+                // Console.WriteLine(length);
+
                 if (currentLayout[0] == 0 || currentLayout[0]==amountPlayers) {
                     currentLayout[0] = 1; // change active to 1 
                 } else {
                     currentLayout[0]++; // change active to plus one
                 };
 
+                // Console.WriteLine(currentLayout[0]);
+
                 int currentUserFrom0 = currentLayout[0]-1;
                 int currentUserNumber = currentLayout[0];
 
                 if (currentLayout[currentUserNumber]!=amountDivided) {
-                    currentLayout[currentUserNumber]++; // card number
-                    PrepareHandout[currentUserNumber].deck[currentUserNumber] = deckCard; // saves current card
+                    // warLayoutAr
+                    // PrepareHandout[0].deck.Add(deckCard);
+                    // PrepareHandout[0].currentCard;
+                    // PrepareHandout[0].currentCard.Equals(4);
+                    // PrepareHandout
+                    // Console.WriteLine(warLayoutAr[currentUserFrom0]);
+                    
+                    // PrepareHandout[currentUserFrom0] = new WarLayout();
+
+                    // PrepareHandout[currentUserFrom0].currentCard;
+                    // PrepareHandout[currentUserFrom0].currentCard = 5;
+
+                    Console.WriteLine(PrepareHandout[0].currentCard);
+                    // Console.WriteLine(PrepareHandout[0].currentCard);
+                    // PrepareHandout[currentUserFrom0].deck.Add(deckCard);
+
+                    // Console.WriteLine(PrepareHandout[0].currentCard);
+
+
+                    // warLayoutAr[currentUserFrom0].deck[0] = deckCard;
+
+                    // warLayoutAr[currentUserFrom0].deck[0] = new CardType();
+                    // Console.WriteLine(warLayoutAr[currentUserFrom0].deck[0].cardSuit);
+                    // Console.WriteLine(PrepareHandout[currentUserFrom0].currentCard);
+                    
+                    // Console.WriteLine(PrepareHandout[currentUserFrom0].deck[0].cardNumber);
+                    // currentLayout[currentUserNumber]++; // card number
+                    // PrepareHandout[currentUserNumber].deck[currentUserNumber] = deckCard; // saves current card
 
                 };
                 

@@ -107,4 +107,13 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
     - GameLoopWar(), which will draw new cards.
     - Handout(), attempts to divide cards to the different users (currently not finished)
     - formatCard(), which will be used once cards are drawn on screen.
-    - 
+
+### 1.0 (13.2022.08.22)
+- Played around with setting methods of setting values. 
+- Changed WarLayout from arrays to Lists.
+- unsuccessful.
+
+## Helpful resources.
+
+### Types
+https://www.c-sharpcorner.com/article/c-sharp-list/
