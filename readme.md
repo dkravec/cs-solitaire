@@ -113,6 +113,11 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - Changed WarLayout from arrays to Lists.
 - unsuccessful.
 
+### 1.0 (14.2022.08.23)
+- Successfully added cards to Users WarLayout on handout.
+- Saves PrepareHandout to Global WarHandout.
+- More commented testing.
+
 ## Helpful resources.
 
 ### Types

@@ -91,7 +91,6 @@ namespace Solitaire.classes
             }
 
             currentLayout = PrepareLayout.ToArray();
-            // WarLayout[] warLayoutAr = PrepareHandout.ToArray();
 
             int amountDivided = warDeck.deck.Length / amountPlayers;
 
@@ -100,31 +99,53 @@ namespace Solitaire.classes
                 int length = currentLayout.Length;
                 // Console.WriteLine(length);
 
+                // Console.WriteLine("---");
+                // Console.WriteLine(currentLayout[0]);
+                // Console.WriteLine(amountPlayers);
                 if (currentLayout[0] == 0 || currentLayout[0]==amountPlayers) {
+                    // Console.WriteLine("ran option 1");
                     currentLayout[0] = 1; // change active to 1 
                 } else {
+                    // Console.WriteLine("ran option 2");
+
                     currentLayout[0]++; // change active to plus one
                 };
 
                 // Console.WriteLine(currentLayout[0]);
+                // Console.WriteLine("---");
 
                 int currentUserFrom0 = currentLayout[0]-1;
                 int currentUserNumber = currentLayout[0];
 
                 if (currentLayout[currentUserNumber]!=amountDivided) {
+                    // Console.WriteLine(currentLayout[currentUserNumber]);
+                    currentLayout[currentUserNumber]++;
                     // warLayoutAr
                     // PrepareHandout[0].deck.Add(deckCard);
                     // PrepareHandout[0].currentCard;
                     // PrepareHandout[0].currentCard.Equals(4);
                     // PrepareHandout
                     // Console.WriteLine(warLayoutAr[currentUserFrom0]);
-                    
+                    WarLayout newWar = new WarLayout();
+                    newWar = PrepareHandout[currentUserFrom0];
+                    newWar.currentCard++;
+
+                    if (currentLayout[currentUserNumber]==1) {
+                        newWar.deck = new List<CardType>();
+                    }
                     // PrepareHandout[currentUserFrom0] = new WarLayout();
 
                     // PrepareHandout[currentUserFrom0].currentCard;
                     // PrepareHandout[currentUserFrom0].currentCard = 5;
+                    
+                    // if (currentLayout[currentUserFrom0])
+                    newWar.deck.Add(deckCard);
 
-                    Console.WriteLine(PrepareHandout[0].currentCard);
+                    PrepareHandout[currentUserFrom0] = newWar;
+
+                    // Console.WriteLine(PrepareHandout[currentUserFrom0].deck[currentLayout[currentUserNumber]].cardSuit);
+                        // working Console
+                    
                     // Console.WriteLine(PrepareHandout[0].currentCard);
                     // PrepareHandout[currentUserFrom0].deck.Add(deckCard);
 
@@ -146,7 +167,11 @@ namespace Solitaire.classes
                 // PrepareHandout[currentUserFrom0].deck
             }
 
-            // PrepareHandout
+            WarHandout = PrepareHandout.ToArray();
+            // Console.WriteLine(WarHandout[0].currentCard);
+            // Console.WriteLine(WarHandout[1].currentCard);
+            Console.WriteLine(WarHandout[0].deck[1].cardNumber);
+            Console.WriteLine(WarHandout[0].deck[3].cardNumber);
         }
     }
 }
