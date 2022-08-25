@@ -118,6 +118,15 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - Saves PrepareHandout to Global WarHandout.
 - More commented testing.
 
+### 1.0 (15.2022.08.24)
+- Cleaned up testing code for dealing cards.
+- added drawPlayerCards, gets the last card in the list, and saves it.
+- Added CurrentWar, which will keep track of cards and war.
+- added CheckWhoWins, not completed, but it will check the lastest played card.
+- Handout() now prepares the war as well. 
+- added currentlyPlaying to warLayout.
+
+
 ## Helpful resources.
 
 ### Types

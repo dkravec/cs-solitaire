@@ -111,7 +111,7 @@ namespace Solitaire
             for (int i = 0; i < coords.GetLength(0); i++)
             {
                 Console.SetCursorPosition(coords[i, 0], coords[i, 1]);
-                Console.Write(myDeck.deck[coords[i, 2]].cardNumber);
+                // Console.Write(myDeck.deck[coords[i, 2]].cardNumber);
                 Console.SetCursorPosition(0, 0);
 
             }
