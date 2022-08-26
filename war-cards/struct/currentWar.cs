@@ -5,5 +5,6 @@ namespace Solitaire.structs
         public Boolean inWar { get; set; }
         public int choosenWarCard { get; set; }
         public List<CardType> cardsInDraw { get; set; }
+        public List<CardType> drawnCardsWar { get; set; }
     }
 }

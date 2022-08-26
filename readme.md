@@ -126,6 +126,22 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - Handout() now prepares the war as well. 
 - added currentlyPlaying to warLayout.
 
+### 1.0 (16.2022.08.25)
+- Updated GameLoopWar, it now checks for when you press enter, and runs drawPlayerCards().
+- drawPlayerCards 
+    - will check if your count is greater than 0
+    - then run DiscardToDeck(), otherwise it will draw the card (not on the console but in a draw deck).
+    - runs moveCardToDiscard after drawing a card.
+- created moveCardToDiscard(), saves drawn card to discard pile, if deck is empty after ran, runs DiscardToDeck().
+- updated CheckWhoWins(), (not completed), adds to an array and runs over that array and will later check who has the higher card.
+- created convertCardtoNum(), will convert the card to a number, so its easier to check who won.
+- created DiscardToDeck(), it will shuffle the discard and copy the list to the user deck.
+-  Prepares discardpile when dealing cards.
+- updated CurrentWar struct, to have drawnCardsWar, for the current war.
+- updated WarLayout, added userID, and location. (both unused)
+
+bug fix
+- 
 
 ## Helpful resources.
 

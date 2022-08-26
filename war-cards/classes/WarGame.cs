@@ -21,8 +21,8 @@ namespace Solitaire.classes
             Console.WriteLine("War Game has started.");
             Handout();
 
-            drawPlayerCards();
-            // GameLoopWar();
+            // drawPlayerCards();
+            GameLoopWar();
             /*
                 * Create a deck of cards
                 * Shuffle the deck
@@ -32,12 +32,21 @@ namespace Solitaire.classes
         }
 
         public void GameLoopWar() {
+            Boolean currentWar = false;
+
             do {
                 string keyPressedMovement = Console.ReadKey(true).Key.ToString();
-
+                // Console.WriteLine(keyPressedMovement);
                 if (keyPressedMovement == "Enter") {
-                    Console.Clear();
-                    DrawNewCard();
+                    if (currentWar) {
+                        
+                    } else {
+                        drawPlayerCards();
+                    }
+                } else if (keyPressedMovement == "LeftArrow") {
+                    
+                } else if (keyPressedMovement == "RightArrow") {
+
                 } else if (keyPressedMovement == "Escape") {
                     Console.WriteLine("Menu... (maybe)... (eventually)...");
                 };
@@ -69,38 +78,124 @@ namespace Solitaire.classes
             for (int i = 0; i<amountPlayers; i++) {
                 WarLayout currentLayout = WarHandout[i];
                 if (currentLayout.currentlyPlaying == true) {
-                    // Console.WriteLine(currentLayout.deck.Count);
-                    CardType currentCard = currentLayout.deck[currentLayout.deck.Count-1];
-                    String formatedCard = formatCard(currentCard);
-                    Console.WriteLine(formatedCard);
-                    WarHandout[i].deck.RemoveAt(deck.Length);
-                    currentWar[i] = new CurrentWar();
-                    currentWar[i].inWar = false;
-                    currentWar[i].cardsInDraw = new List<CardType>();
-                    currentWar[i].cardsInDraw.Add(currentCard);
+                    Console.WriteLine(currentLayout.deck.Count);
+                    if (currentLayout.deck.Count>0) {
+                        // if (currentLayout.deck.Count == 1) Console.WriteLine("1");
+                        // Console.WriteLine(currentLayout.deck.Count);
+                        CardType currentCard = currentLayout.deck[currentLayout.deck.Count-1];
+                        String formatedCard = formatCard(currentCard);
+                        // Console.WriteLine(formatedCard);
+                        // WarHandout[i].deck.RemoveAt(currentLayout.deck.Count-1);
+                        currentWar[i] = new CurrentWar();
+                        currentWar[i].inWar = false;
+                        currentWar[i].cardsInDraw = new List<CardType>();
+                        currentWar[i].cardsInDraw.Add(currentCard);
+                        moveCardToDiscard(currentLayout.deck.Count-1, i);
+                    } else {
+                        DiscardToDeck(i);
+                        Console.WriteLine("You ran out of cards.");
+                    }
                 }
             }
+
+            CheckWhoWins();
+
+            return;
+        }
+
+        public void moveCardToDiscard(int cardIndex, int userIndex) {
+            // Console.WriteLine(WarHandout[userIndex]);
+            WarHandout[userIndex].discardPile.Add(WarHandout[userIndex].deck[cardIndex]);
+            Console.WriteLine(WarHandout[userIndex].discardPile[0].cardNumber);
+            WarHandout[userIndex].deck.RemoveAt(cardIndex);
+            if (WarHandout[userIndex].deck.Count() == 0) {
+                DiscardToDeck(userIndex);
+            };
+            // if (DiscardToDeck(int usernum))
         }
 
         public void CheckWhoWins() {
+            List<CardType> cardsAgainst = new List<CardType>();
             for (int i = 0; i<amountPlayers; i++) {
                 WarLayout currentLayout = WarHandout[i];
-                if (currentLayout.currentlyPlaying == true) {  
-                    CardType currentCard = currentLayout.deck[currentLayout.deck.Count];
-                    String formatedCard = formatCard(currentCard);
-                    Console.WriteLine(formatedCard);
-                    WarHandout[i].deck.RemoveAt(deck.Length);
-                    currentWar[i] = new CurrentWar();
-                    currentWar[i].inWar = false;
-                    currentWar[i].cardsInDraw = new List<CardType>();
-                    currentWar[i].cardsInDraw.Add(currentCard);
-                }
+                if (currentLayout.currentlyPlaying == true) {
+                    if (currentWar[i].inWar) {
+                        cardsAgainst.Add(new CardType());
+                    } else {
+                        cardsAgainst.Add(currentWar[i].cardsInDraw[0]);
+                    }
+                    // CardType currentCard = currentLayout.deck[currentLayout.deck.Count-1];
+                    // String formatedCard = formatCard(currentCard);
+                    // Console.WriteLine(formatedCard);
+                    // // WarHandout[i].deck.RemoveAt(deck.Length);
+                    // currentWar[i] = new CurrentWar();
+                    // currentWar[i].inWar = false;
+                    // currentWar[i].cardsInDraw = new List<CardType>();
+                    // currentWar[i].cardsInDraw.Add(currentCard);
+                } else {
+                    cardsAgainst.Add(new CardType());
+                };
                 // WarHandout[i];
                 // CardType currentCard = WarHandout[i].deck[deck.Length];
                 // String formatedCard = formatCard(currentCard);
                 // Console.WriteLine(formatedCard);
-            }  
+            }; 
+
+            int[] winning = { };
+
+
+            for (int j = 0; j<cardsAgainst.Count(); j++) {
+                int convertNum = convertCardtoNum(cardsAgainst[j].cardNumber);
+                for (int k = 0; k<cardsAgainst.Count(); k++) {
+                    // if (cardsAgainst=="A" || "J")
+                    // winning[j] = k;
+                };
+            };
         }
+
+        public int convertCardtoNum(string cardNumber) {
+            int converted = 0;
+
+            bool isNumerical = int.TryParse(cardNumber, out converted);
+            if (isNumerical) return converted;
+            else if (cardNumber=="A") converted = 1;
+            else if (cardNumber=="J") converted = 11;
+            else if (cardNumber=="Q") converted = 12;
+            else if (cardNumber=="K") converted = 13;
+            else if (cardNumber=="JK") converted = 14;
+
+            return converted;
+        }
+
+
+        public void DiscardToDeck(int usernum) {
+            // Console.WriteLine(WarHandout[usernum].discardPile[0].cardNumber);
+            List<CardType> newDiscard = shuffleDiscard(usernum);
+            // WarHandout[usernum].deck = WarHandout[usernum].discardPile;
+            WarHandout[usernum].deck = newDiscard;
+            WarHandout[usernum].discardPile = new List<CardType>();
+            Console.WriteLine("----");
+            // Console.WriteLine(WarHandout[usernum].deck[0]);
+            Console.WriteLine("Shuffling Cards.");
+            Console.WriteLine("----");
+        }
+
+        public List<CardType> shuffleDiscard(int usernum) {
+            CardType[] currentDiscard = WarHandout[usernum].discardPile.ToArray();
+            var rng = new Random();
+
+            int n = currentDiscard.Length;
+            while (n > 1) 
+            {
+                int k = rng.Next(n--);
+                CardType temp = currentDiscard[n];
+                currentDiscard[n] = currentDiscard[k];
+                currentDiscard[k] = temp;
+            };
+
+            return currentDiscard.ToList();
+        }
+
         public void WarDraw() {
             // if !currentwar[0]) {
 
@@ -186,6 +281,10 @@ namespace Solitaire.classes
             };
 
             WarHandout = PrepareHandout.ToArray();
+            for (int j=0; j<WarHandout.Length; j++) {
+                WarHandout[j].discardPile = new List<CardType>();
+            };
+
             // Console.WriteLine(WarHandout[0].deck[0].cardNumber);
             // Console.WriteLine(WarHandout[0].deck[1].cardNumber);
             // Console.WriteLine(WarHandout[1].deck[3].cardNumber);
