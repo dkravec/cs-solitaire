@@ -140,6 +140,9 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 - updated CurrentWar struct, to have drawnCardsWar, for the current war.
 - updated WarLayout, added userID, and location. (both unused)
 
+### 1.0 (17.2022.11.27)
+- cleaned up war code, removed extra console logs.
+
 bug fix
 - 
 

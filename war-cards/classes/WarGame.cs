@@ -78,7 +78,8 @@ namespace Solitaire.classes
             for (int i = 0; i<amountPlayers; i++) {
                 WarLayout currentLayout = WarHandout[i];
                 if (currentLayout.currentlyPlaying == true) {
-                    Console.WriteLine(currentLayout.deck.Count);
+                    // Console.WriteLine("current layout deck count");
+                    // Console.WriteLine(currentLayout.deck.Count);
                     if (currentLayout.deck.Count>0) {
                         // if (currentLayout.deck.Count == 1) Console.WriteLine("1");
                         // Console.WriteLine(currentLayout.deck.Count);
@@ -90,6 +91,7 @@ namespace Solitaire.classes
                         currentWar[i].inWar = false;
                         currentWar[i].cardsInDraw = new List<CardType>();
                         currentWar[i].cardsInDraw.Add(currentCard);
+                        Console.WriteLine("Player " + i + " drew: " + formatedCard);
                         moveCardToDiscard(currentLayout.deck.Count-1, i);
                     } else {
                         DiscardToDeck(i);
@@ -106,8 +108,10 @@ namespace Solitaire.classes
         public void moveCardToDiscard(int cardIndex, int userIndex) {
             // Console.WriteLine(WarHandout[userIndex]);
             WarHandout[userIndex].discardPile.Add(WarHandout[userIndex].deck[cardIndex]);
-            Console.WriteLine(WarHandout[userIndex].discardPile[0].cardNumber);
+            // Console.WriteLine("war handout userindex discard pile first card number ");
+            // Console.WriteLine(WarHandout[userIndex].discardPile[0].cardNumber);
             WarHandout[userIndex].deck.RemoveAt(cardIndex);
+            // Console.WriteLine(WarHandout[userIndex].discardPile.Count);
             if (WarHandout[userIndex].deck.Count() == 0) {
                 DiscardToDeck(userIndex);
             };
