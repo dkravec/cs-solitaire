@@ -77,22 +77,25 @@ namespace Solitaire.classes
 
             for (int i = 0; i<amountPlayers; i++) {
                 WarLayout currentLayout = WarHandout[i];
+
                 if (currentLayout.currentlyPlaying == true) {
-                    // Console.WriteLine("current layout deck count");
-                    // Console.WriteLine(currentLayout.deck.Count);
                     if (currentLayout.deck.Count>0) {
                         // if (currentLayout.deck.Count == 1) Console.WriteLine("1");
-                        // Console.WriteLine(currentLayout.deck.Count);
+                         Console.WriteLine(currentLayout.deck.Count);
                         CardType currentCard = currentLayout.deck[currentLayout.deck.Count-1];
                         String formatedCard = formatCard(currentCard);
                         // Console.WriteLine(formatedCard);
                         // WarHandout[i].deck.RemoveAt(currentLayout.deck.Count-1);
-                        currentWar[i] = new CurrentWar();
-                        currentWar[i].inWar = false;
-                        currentWar[i].cardsInDraw = new List<CardType>();
+                        currentWar[i] = new CurrentWar
+                        {
+                            inWar = false,
+                            cardsInDraw = new List<CardType>()
+                        };
                         currentWar[i].cardsInDraw.Add(currentCard);
                         Console.WriteLine("Player " + i + " drew: " + formatedCard);
-                        moveCardToDiscard(currentLayout.deck.Count-1, i);
+                        moveCardToDiscard(currentLayout.deck.Count-1, 0, i);
+                        //CheckWhoWins();
+
                     } else {
                         DiscardToDeck(i);
                         Console.WriteLine("You ran out of cards.");
@@ -100,32 +103,28 @@ namespace Solitaire.classes
                 }
             }
 
-            CheckWhoWins();
 
             return;
         }
 
-        public void moveCardToDiscard(int cardIndex, int userIndex) {
-            // Console.WriteLine(WarHandout[userIndex]);
-            WarHandout[userIndex].discardPile.Add(WarHandout[userIndex].deck[cardIndex]);
-            // Console.WriteLine("war handout userindex discard pile first card number ");
-            // Console.WriteLine(WarHandout[userIndex].discardPile[0].cardNumber);
-            WarHandout[userIndex].deck.RemoveAt(cardIndex);
-            // Console.WriteLine(WarHandout[userIndex].discardPile.Count);
-            if (WarHandout[userIndex].deck.Count() == 0) {
+        public void moveCardToDiscard(int cardIndex, int userIndex, int removeFromUser) {
+            WarHandout[userIndex].discardPile.Add(WarHandout[removeFromUser].deck[cardIndex]);
+            WarHandout[removeFromUser].deck.RemoveAt(cardIndex);
+
+            if (WarHandout[userIndex].deck.Count == 0) {
                 DiscardToDeck(userIndex);
             };
-            // if (DiscardToDeck(int usernum))
         }
 
         public void CheckWhoWins() {
-            List<CardType> cardsAgainst = new List<CardType>();
+            List<CardType> cardsAgainst = new();
             for (int i = 0; i<amountPlayers; i++) {
                 WarLayout currentLayout = WarHandout[i];
                 if (currentLayout.currentlyPlaying == true) {
                     if (currentWar[i].inWar) {
-                        cardsAgainst.Add(new CardType());
+                        //cardsAgainst.Add(new CardType());
                     } else {
+                        Console.WriteLine(currentWar[i].cardsInDraw.Count);
                         cardsAgainst.Add(currentWar[i].cardsInDraw[0]);
                     }
                     // CardType currentCard = currentLayout.deck[currentLayout.deck.Count-1];

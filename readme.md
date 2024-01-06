@@ -143,6 +143,9 @@ Run "dotnet run" in the terminal with the project root folder as your entry poin
 ### 1.0 (17.2022.11.27)
 - cleaned up war code, removed extra console logs.
 
+### 1.0 (18.2024.01.05)
+- fixed some compile complaints 
+
 bug fix
 - 
 
